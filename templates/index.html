@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Spam Classifier</title>
+</head>
+<body>
+
+<h1>SMS Spam Classifier</h1>
+
+<form id="smsForm">
+    <label for="smsInput">Enter SMS Message:</label>
+    <textarea id="smsInput" rows="4" cols="50"></textarea><br>
+
+    <button type="button" onclick="classifySMS()">Classify</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+    function classifySMS() {
+        // Get the user input
+        var userInput = document.getElementById("smsInput").value;
+
+        // Simple check for empty input
+        if (!userInput.trim()) {
+            alert("Please enter a message.");
+            return;
+        }
+
+        // Perform the classification (replace this with your actual classification logic)
+        var isSpam = fakeClassifier(userInput);
+
+        // Display the result
+        var resultElement = document.getElementById("result");
+        resultElement.innerHTML = isSpam ? "<strong>Spam!</strong>" : "<strong>Not Spam!</strong>";
+    }
+
+    // Replace this function with your actual SMS spam classification logic
+    function fakeClassifier(message) {
+        // This is just a placeholder, replace it with your real classification logic
+        // For a real application, you would likely use a machine learning model
+        // trained on a dataset of SMS messages.
+        var keywords = ["offer", "prize", "free", "win", "claim"];
+        return keywords.some(keyword => message.toLowerCase().includes(keyword));
+    }
+</script>
+
+</body>
+</html>
